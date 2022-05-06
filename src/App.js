@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { CreateTopic } from "./pages/CreateTopic";
+import { Home } from "./pages/Home";
+import { SignUp } from "./pages/SignUp";
+import { TopicPage } from "./pages/TopicPage";
+import { ContextComponent } from "./contexts/userContext";
+import { Login } from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ContextComponent>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/topic/:topicId" element={<TopicPage />} />
+          <Route path="/create-topic" element={<CreateTopic />} />
+        </Routes>
+      </ContextComponent>
     </div>
   );
 }
